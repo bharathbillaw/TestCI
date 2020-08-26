@@ -21,6 +21,7 @@ jobs:
         id: next_version
         with:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_PREFIX: dev-v
       
       - name: Create Release
         id: create_release
@@ -28,7 +29,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ steps.next_version.outputs.NEXT_BUILD_VERSION }}
-          release_name: v${{ steps.next_version.outputs.NEXT_BUILD_VERSION }}
+          tag_name: dev-v${{ steps.next_version.outputs.NEXT_BUILD_VERSION }}
+          release_name: dev-v${{ steps.next_version.outputs.NEXT_BUILD_VERSION }}
           draft: false
           prerelease: true
